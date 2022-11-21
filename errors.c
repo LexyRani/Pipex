@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
+/*   ft_errors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 15:53:04 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/21 14:38:27 by aceralin         ###   ########.fr       */
+/*   Created: 2022/11/20 21:25:08 by aceralin          #+#    #+#             */
+/*   Updated: 2022/11/21 13:21:04 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "pipex.h"
 
-int	ft_print_unsigned(unsigned int nb)
+void ft_exit (t_pipex *pipex)
 {
-	int	len;
+	free(pipex);
+	exit(EXIT_FAILURE);
+}
+void	ft_argc_error(t_pipex *pipex)
+{
+	ft_printf("Missing or too many arguments\nEx: ./pipex [file1][cmd1][cmd2][file2]\n");
+	free(pipex);
+	exit(EXIT_FAILURE);
+}
 
-	len = 0;
-	if (nb > 9)
-	{
-		len += ft_print_unsigned(nb / 10);
-		len += ft_print_unsigned(nb % 10);
-	}		
-	else
-		len += ft_putchar(nb + '0');
-	return (len);
+// A tester
+void	ft_error(t_pipex *pipex, char *error)
+{
+	perror(error);
+	free(pipex);
+	exit(EXIT_FAILURE);
 }

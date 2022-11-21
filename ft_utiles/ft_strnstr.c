@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_errors.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 21:25:08 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/20 22:19:22 by aceralin         ###   ########.fr       */
+/*   Created: 2022/11/21 18:33:15 by aceralin          #+#    #+#             */
+/*   Updated: 2022/11/21 18:37:31 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void ft_exit (t_pipex *pipex)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	free(pipex);
-	exit(EXIT_FAILURE);
-}
-void	ft_argc_error(t_pipex *pipex)
-{
-	ft_printf("Missing or too many arguments\nEx: ./pipex [file1][cmd1][cmd2][file2]\n");
-	free(pipex);
-	exit(EXIT_FAILURE);
+	unsigned int	i;
+	unsigned int	j;
+
+	if (!big || !little)
+		return (0);
+	i = 0;
+	if (little[0] == '\0')
+		return ((char *)big);
+	while (big[i] != '\0' && i < len)
+	{
+		j = 0;
+		while (big[i + j] == little[j] && i + j < len && little[j] != '\0')
+			j++;
+		if (little[j] == '\0')
+			return ((char *) big + i);
+		i++;
+	}
+	return (0);
 }
