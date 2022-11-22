@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 13:59:09 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/21 18:26:31 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:26:43 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_child1_process(t_pipex *pipex, char *argv[])
 	if (dup2(pipex->file1, 0) == -1)
 		ft_error(pipex, strerror(errno));
 	pipex->cmd1 = ft_split(argv[2],' ');
-	if (pipex->cmd1[0] && ft_check_PATH(pipex, argv))
+	if (pipex->cmd1[0] && ft_check_PATH(pipex, 1))
 	{
 		if(execve(ft_check_PATH(pipex, 1) , pipex-> cmd1, pipex-> env) == -1)
 			ft_error(pipex, strerror(errno));
@@ -32,7 +32,20 @@ void	ft_child1_process(t_pipex *pipex, char *argv[])
 
 void	ft_child2_process(t_pipex *pipex, char *argv[])
 {
-	
+	if (dup2(pipex->pipefd[0], 0) == -1)
+		ft_error(pipex, strerror(errno)); 
+	close(pipex->pipefd[1]);
+	if (dup2(pipex->file1, 1) == -1)
+		ft_error(pipex, strerror(errno));
+	pipex->cmd1 = ft_split(argv[3],' ');
+	if (pipex->cmd1[0] && ft_check_PATH(pipex, 2))
+	{
+		if(execve(ft_check_PATH(pipex, 2) , pipex-> cmd1, pipex-> env) == -1)
+			ft_error(pipex, strerror(errno));
+		// free cmd2	
+	}
+	else
+		/*error*/{}
 }
 
 void	ft_process_child(t_pipex *pipex,char *argv[])

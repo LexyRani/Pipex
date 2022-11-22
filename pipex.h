@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:09:09 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/21 18:36:17 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/22 20:49:27 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PIPEX_H
 
 #ifndef PATH
-#define PATH PATH=/mnt/nfs/homes/aceralin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:\
-                                /usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# define PATH "PATH =/mnt/nfs/homes/aceralin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:\
+                                /usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
 #endif  
 
 # include <sys/wait.h>
@@ -56,6 +56,7 @@ void	ft_child1_process(t_pipex *pipex, char *argv[]);
 void	ft_child2_process(t_pipex *pipex, char *argv[]);
 
 /* utiles*/
+size_t	ft_strlen(const char *s);
 char	**ft_split(char const *s, char c);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 
