@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 12:58:12 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/21 15:57:54 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/23 17:48:05 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*word_extraction(const char *str, char c)
 	return (word);
 }
 
-static void	*ft_free( char **tab)
+static void	**ft_split_free( char **tab)
 {
 	int	i;
 
@@ -86,7 +86,7 @@ static char	**ft_create_tab(char const *s, char c, int words)
 		{
 			tab[j++] = word_extraction(s + i, c);
 			if (tab[j - 1] == 0)
-				return (ft_free(tab));
+				return (ft_split_free(tab));
 			i++;
 			while (s[i] && s[i] != c)
 				i++;

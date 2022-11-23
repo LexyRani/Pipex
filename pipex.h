@@ -6,17 +6,12 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:09:09 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/22 20:49:27 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/23 22:06:06 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
-
-#ifndef PATH
-# define PATH "PATH =/mnt/nfs/homes/aceralin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:\
-                                /usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
-#endif  
 
 # include <sys/wait.h>
 # include <stdlib.h>
@@ -30,7 +25,7 @@
 
 typedef struct s_pipex
 {
-	int	pipefd[2];
+	int	pipe_fd[2];
 	//fd
 	int	file1;
 	int	file2;
@@ -57,19 +52,26 @@ void	ft_child2_process(t_pipex *pipex, char *argv[]);
 
 /* utiles*/
 size_t	ft_strlen(const char *s);
+void	ft_free(char **tab);
 char	**ft_split(char const *s, char c);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 /*Command_Path*/
-
+void	ft_found_cmdpath(t_pipex *pipex);
 int		ft_cmd_is_pathname(t_pipex *pipex);
 void	ft_check_cmd(t_pipex *pipex, int index);
-void	*ft_check_PATH(t_pipex *pipex, int index);
+char	*ft_check_PATH(t_pipex *pipex, int index);
 
-/*Parsing*/
 
 /*Errors*/
 void	ft_exit (t_pipex *pipex);
 void	ft_argc_error(t_pipex *pipex);
+void	ft_error(t_pipex *pipex, char *error);
+
+/*close pipe and fd*/
+
+void    ft_close_fds(t_pipex *pipex);
+void    ft_close_pipes(t_pipex *pipex);
 
 #endif
