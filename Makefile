@@ -6,11 +6,17 @@
 #    By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 21:11:53 by aceralin          #+#    #+#              #
-#    Updated: 2022/11/23 21:42:52 by aceralin         ###   ########.fr        #
+#    Updated: 2022/11/25 22:03:23 by aceralin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			=  pipex.c path.c child_process.c close.c errors.c close.c
+SRCS			=  	pipex.c\
+					path.c \
+					childs_process.c\
+					errors.c \
+					close.c\
+					ft_utiles.c\
+					ft_split.c\
 
 OBJS			= $(SRCS:.c=.o)
 
@@ -20,12 +26,11 @@ CFLAGS			= -Wall -Wextra -Werror -I.
 
 NAME			= pipex
 
-all:			$(NAME) pipex.h
+all:			$(NAME) 
 
-$(NAME):		$(OBJS)
-				@${MAKE} -C .ft_printf/
+$(NAME):		$(OBJS) pipex.h
+				@${MAKE} -C ./ft_printf
 				@${CC} ${CFLAGS} ${OBJS} ./ft_printf/ft_printf -o pipex
-				ar rcs $(NAME) $(OBJS)
 
 clean:
 				@${MAKE} -C ./ft_printf fclean
