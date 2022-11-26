@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:25:32 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/26 17:18:31 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/27 00:12:10 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_found_cmdpath(t_pipex *pipex)
 	int	i;
 
 	i = 0;
-	if(!pipex->env[0])
+	if (!pipex->env[0])
 		ft_env_error(pipex);
 	else
 	{
@@ -76,12 +76,3 @@ char	*ft_check_PATH(t_pipex *pipex, int index)
 	ft_cmd_error(pipex->cmd, pipex);
 	return (0);
 }
-
-/*ok*/ // check quel commande c'est et la stocker dans une variable cmd
-	/*ok*/ // si cmd=pathname on verifie les acces? access(cmd, F_OK) verrif errno?
-	/*ok*/ // si ok? on renvoie direct la commande  a faire excecuter par execve
-	// sinon si cmd != de Pathname, on va chercher ou la cmd se trouve
-	// tant qu'on se trouve dans paths, on va rajouter avec strjoin un slash a la fin de du mot
-	// puis la commande a la fin avec strjoin
-	// verifier les acces aux fichiers
-	// free(s)

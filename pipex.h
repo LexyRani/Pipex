@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:09:09 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/26 16:40:23 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/27 00:16:12 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@ typedef struct s_pipex
 	//env
 	char	**env;
 }				t_pipex;
+
+
+# define ERR_INFILE "Infile"
+# define ERR_OUTFILE "Outfile"
+# define ERR_INPUT "Invalid number of arguments.\n"
+# define ERR_PIPE "Pipe"
+# define ERR_ENVP "Environment"
+# define ERR_CMD "Command not found: "
+# define ERR_HEREDOC "here_doc"
 
 /*Main*/
 void	ft_struct_init(t_pipex *pipex, char *argv[], char *envp[]);
@@ -76,5 +85,7 @@ void	ft_env_error(t_pipex *pipex);
 
 void    ft_close_fds(t_pipex *pipex);
 void    ft_pipes_close(t_pipex *pipex);
+
+/*testing functions*/
 
 #endif

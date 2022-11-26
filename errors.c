@@ -6,12 +6,13 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 21:25:08 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/26 17:08:51 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/27 00:16:48 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+/*retirer les fonctions inutiles*/
 void ft_exit (t_pipex *pipex)
 {
 	free(pipex);
@@ -50,12 +51,10 @@ void	ft_cmd_error(char *cmd, t_pipex *pipex) /*simplifier*/
 	write(2, "Command not found: ", 20);
 	write(2, cmd, ft_strlen(cmd));
 	write(2, "\n", 1);
-	// if((ft_strnstr(*cmd, "/", ft_strlen(*cmd))))
-	// {
-	// 	free(pipex);
-	// 	exit(EXIT_FAILURE);
-	// }
-	//ft_free(cmd);
+	if (pipex->cmd2 && cmd == pipex->cmd2[0])
+		ft_free(pipex->cmd2);
+	if (pipex->cmd1 && cmd == pipex->cmd1[0])
+		ft_free(pipex->cmd1);
 	free(pipex);
 	exit(EXIT_FAILURE);
 }
