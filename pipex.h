@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:09:09 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/25 17:39:56 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/26 16:40:23 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_exit (t_pipex *pipex);
 void	ft_argc_error(t_pipex *pipex);
 void	ft_error(t_pipex *pipex, char *error);
 void	ft_path_error(t_pipex *pipex);
-void	ft_cmd_error(char **cmd,t_pipex *pipex);
+void	ft_cmd_error(char *cmd, t_pipex *pipex);
 void	ft_env_error(t_pipex *pipex);
 
 /*close pipe and fd*/

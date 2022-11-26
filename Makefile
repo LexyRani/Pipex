@@ -6,7 +6,7 @@
 #    By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 21:11:53 by aceralin          #+#    #+#              #
-#    Updated: 2022/11/25 22:03:23 by aceralin         ###   ########.fr        #
+#    Updated: 2022/11/26 17:13:52 by aceralin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I.
+CFLAGS			= -g3 -Wall -Wextra -Werror -I.
 
 NAME			= pipex
 

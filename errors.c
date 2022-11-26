@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 21:25:08 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/25 14:31:19 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/26 17:08:51 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,28 @@ void	ft_error(t_pipex *pipex, char *error)
 
 void	ft_env_error(t_pipex *pipex)
 {
-	ft_printf("Missing Env\n");
+	//ft_printf("Missing Env\n");
 	free(pipex);
 	exit(EXIT_FAILURE);
 }
 
 void	ft_path_error(t_pipex *pipex)
 {
-	ft_printf("Missing Path");
+	//ft_printf("Missing Path");
 	free(pipex);
 	exit(EXIT_FAILURE);
 }
-void	ft_cmd_error(char **cmd,t_pipex *pipex) /*simplifier*/
+void	ft_cmd_error(char *cmd, t_pipex *pipex) /*simplifier*/
 {
-	write(2, cmd[0], ft_strlen(cmd[0]));
-	write(2, ":Command not found\n", 20);
-	if((ft_strnstr(*cmd, "/", ft_strlen(*cmd))))
-	{
-		free(pipex);
-		exit(EXIT_FAILURE);
-	}
-	ft_free(cmd);
+	write(2, "Command not found: ", 20);
+	write(2, cmd, ft_strlen(cmd));
+	write(2, "\n", 1);
+	// if((ft_strnstr(*cmd, "/", ft_strlen(*cmd))))
+	// {
+	// 	free(pipex);
+	// 	exit(EXIT_FAILURE);
+	// }
+	//ft_free(cmd);
 	free(pipex);
 	exit(EXIT_FAILURE);
 }

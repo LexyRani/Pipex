@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:25:32 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/25 23:26:30 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/26 17:18:31 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	ft_cmd_is_pathname(t_pipex *pipex)
 	{
 		if (access(pipex->cmd,F_OK)  == 0)
 			return(1);
-		else
-			ft_cmd_error(&pipex->cmd, pipex);
+	//	else
+	//		ft_cmd_error(&pipex->cmd, pipex);
 	}
 	return (0);
 }
@@ -43,9 +43,9 @@ int	ft_cmd_is_pathname(t_pipex *pipex)
 void	ft_check_cmd(t_pipex *pipex, int index)
 {
 	if (index == 1)
-		pipex->cmd = pipex-> cmd1[0];
+		pipex->cmd = pipex->cmd1[0];
 	else
-		pipex->cmd = pipex-> cmd2[0];
+		pipex->cmd = pipex->cmd2[0];
 		
 }
 
@@ -54,18 +54,18 @@ char	*ft_check_PATH(t_pipex *pipex, int index)
 	int	i;
 	char	*path;
 	char	*add_slash;
-	printf("\n\n checkPATH \n\n");
+
 	ft_check_cmd(pipex, index);
 	if(ft_cmd_is_pathname(pipex))
 		return(pipex->cmd);
 	ft_found_cmdpath(pipex);
 	i = -1;
-	while(pipex->paths[i++])
+	while(pipex->paths[++i])
 	{
 		add_slash = ft_strjoin(pipex->paths[i], "/");
 		path = ft_strjoin(add_slash, pipex->cmd);
 		free(add_slash);
-		if (access(path,F_OK)== 0)
+		if (access(path, F_OK | X_OK) == 0)// message au cas ou il n y a pas d access
 		{
 			ft_free(pipex->paths);
 			return(path);
@@ -73,6 +73,7 @@ char	*ft_check_PATH(t_pipex *pipex, int index)
 		free(path);
 	}
 	ft_free(pipex->paths);
+	ft_cmd_error(pipex->cmd, pipex);
 	return (0);
 }
 
