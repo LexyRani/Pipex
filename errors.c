@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 21:25:08 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/27 15:45:24 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:46:21 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_path_error(t_pipex *pipex)
 
 void	ft_cmd_error(char *cmd, t_pipex *pipex)
 {
-	write(2, "Command not found: ", 20);
+	write(2, "command not found: ", 20);
 	write(2, cmd, ft_strlen(cmd));
 	write(2, "\n", 1);
 	if (pipex->cmd2 && cmd == pipex->cmd2[0])

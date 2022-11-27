@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 13:59:09 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/27 15:40:16 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:55:25 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_child1_process(t_pipex *pipex, char *argv[])
 	pipex->cmd1 = ft_split(argv[2], ' ');
 	path1 = ft_check_path(pipex, 1);
 	execve(path1, pipex->cmd1, pipex->env);
-	perror("pipex");
+	perror("execve");
 	if (pipex->cmd1 && path1 != pipex->cmd1[0])
 		free(path1);
 	ft_free(pipex->cmd1);
@@ -42,7 +42,7 @@ void	ft_child2_process(t_pipex *pipex, char *argv[])
 	pipex->cmd2 = ft_split(argv[3], ' ');
 	path2 = ft_check_path(pipex, 2);
 	execve(path2, pipex->cmd2, pipex->env);
-	perror("pipex");
+	perror("execve");
 	if (pipex->cmd2 && path2 != pipex->cmd2[0])
 		free(path2);
 	ft_free(pipex->cmd2);

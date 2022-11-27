@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:25:32 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/27 13:32:57 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/27 18:19:20 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	ft_cmd_is_pathname(t_pipex *pipex)
 	{
 		if (access(pipex->cmd, F_OK) == 0)
 			return (1);
-	//	else
-	//		ft_cmd_error(&pipex->cmd, pipex);
+		else
+			perror(pipex->cmd);
 	}
 	return (0);
 }
@@ -65,7 +65,7 @@ char	*ft_check_path(t_pipex *pipex, int index)
 		add_slash = ft_strjoin(pipex->paths[i], "/");
 		path = ft_strjoin(add_slash, pipex->cmd);
 		free(add_slash);
-		if (access(path, F_OK | X_OK) == 0) // message au cas ou il n y a pas d access
+		if (access(path, F_OK | X_OK) == 0)
 		{
 			ft_free(pipex->paths);
 			return (path);
