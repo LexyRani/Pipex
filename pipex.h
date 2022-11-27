@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:09:09 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/27 00:16:12 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/27 15:48:24 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,37 +25,24 @@
 
 typedef struct s_pipex
 {
-	int	pipe_fd[2];
-	//fd
-	int	file1;
-	int	file2;
-	
-	int	pid1;
-	int	pid2;
+	int		pipe_fd[2];
+	int		file1;
+	int		file2;
+	int		pid1;
+	int		pid2;
 	char	*cmd;
 	char	**cmd1;
 	char	**cmd2;
-	//Path
 	char	**paths;
-	//env
 	char	**env;
 }				t_pipex;
-
-
-# define ERR_INFILE "Infile"
-# define ERR_OUTFILE "Outfile"
-# define ERR_INPUT "Invalid number of arguments.\n"
-# define ERR_PIPE "Pipe"
-# define ERR_ENVP "Environment"
-# define ERR_CMD "Command not found: "
-# define ERR_HEREDOC "here_doc"
 
 /*Main*/
 void	ft_struct_init(t_pipex *pipex, char *argv[], char *envp[]);
 void	ft_childs(t_pipex *pipex, char *argv[]);
 
 /*childs_process*/
-void	ft_process_child(t_pipex *pipex,char *argv[]);
+void	ft_process_child(t_pipex *pipex, char *argv[]);
 void	ft_child1_process(t_pipex *pipex, char *argv[]);
 void	ft_child2_process(t_pipex *pipex, char *argv[]);
 
@@ -70,11 +57,10 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_found_cmdpath(t_pipex *pipex);
 int		ft_cmd_is_pathname(t_pipex *pipex);
 void	ft_check_cmd(t_pipex *pipex, int index);
-char	*ft_check_PATH(t_pipex *pipex, int index);
-
+char	*ft_check_path(t_pipex *pipex, int index);
 
 /*Errors*/
-void	ft_exit (t_pipex *pipex);
+void	ft_exit(t_pipex *pipex);
 void	ft_argc_error(t_pipex *pipex);
 void	ft_error(t_pipex *pipex, char *error);
 void	ft_path_error(t_pipex *pipex);
@@ -82,10 +68,7 @@ void	ft_cmd_error(char *cmd, t_pipex *pipex);
 void	ft_env_error(t_pipex *pipex);
 
 /*close pipe and fd*/
-
-void    ft_close_fds(t_pipex *pipex);
-void    ft_pipes_close(t_pipex *pipex);
-
-/*testing functions*/
+void	ft_close_fds(t_pipex *pipex);
+void	ft_pipes_close(t_pipex *pipex);
 
 #endif
