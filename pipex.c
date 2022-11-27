@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:07:00 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/27 18:15:05 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/27 19:56:06 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,16 @@ void	ft_struct_init(t_pipex *pipex, char *argv[], char *envp[])
 	pipex->paths = NULL;
 }
 
+int ft_status(t_pipex *pipex)
+{
+	int	status;
+	
+	waitpid(pipex->pid1, &status, 0);
+	waitpid(pipex->pid2, &status, 0);
+	
+	free(pipex);
+	return(status);
+}
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_pipex	*pipex;
@@ -48,8 +58,5 @@ int	main(int argc, char *argv[], char *envp[])
 		ft_child2_process(pipex, argv);
 	ft_pipes_close(pipex);
 	ft_close_fds(pipex);
-	waitpid(pipex->pid1, NULL, 0);
-	waitpid(pipex->pid2, NULL, 0); // faire une seule ligne avec waitpid? car trop de ligne
-	free(pipex);
-	return (0);
+	return (ft_status(pipex));
 }
