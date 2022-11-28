@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:07:00 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/28 14:57:05 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:36:53 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ void	ft_struct_init(t_pipex *pipex, char *argv[], char *envp[])
 {
 	pipex->file1 = open(argv[1], O_RDONLY);
 	pipex->file2 = open(argv[4], O_WRONLY | O_TRUNC | O_CREAT, 0777);
-	if (pipex->file2 == -1 || pipex->file1 == -1)
-	{
-		ft_close_fds(pipex);
-		ft_pipes_close(pipex);
-		ft_error(pipex, "open");
-	}
 	pipex->env = envp;
 	pipex->cmd1 = NULL;
 	pipex->cmd2 = NULL;
