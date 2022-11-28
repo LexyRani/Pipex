@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:07:00 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/27 19:56:06 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:41:51 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_struct_init(t_pipex *pipex, char *argv[], char *envp[])
 {
 	pipex->file1 = open(argv[1], O_RDONLY);
 	pipex->file2 = open(argv[4], O_WRONLY | O_TRUNC | O_CREAT, 0777);
-	if(pipex->file2 == -1 || pipex->file1 == -1)
+	if (pipex->file2 == -1 || pipex->file1 == -1)
 		ft_error(pipex, "open");
 	pipex->env = envp;
 	pipex->cmd1 = NULL;
@@ -24,16 +24,16 @@ void	ft_struct_init(t_pipex *pipex, char *argv[], char *envp[])
 	pipex->paths = NULL;
 }
 
-int ft_status(t_pipex *pipex)
+int	ft_status(t_pipex *pipex)
 {
 	int	status;
-	
+
 	waitpid(pipex->pid1, &status, 0);
 	waitpid(pipex->pid2, &status, 0);
-	
 	free(pipex);
-	return(status);
+	return (status);
 }
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_pipex	*pipex;

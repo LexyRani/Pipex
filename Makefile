@@ -6,7 +6,7 @@
 #    By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 21:11:53 by aceralin          #+#    #+#              #
-#    Updated: 2022/11/27 19:59:55 by aceralin         ###   ########.fr        #
+#    Updated: 2022/11/28 14:42:08 by aceralin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,9 @@ NAME			= pipex
 all:			$(NAME) 
 
 $(NAME):		$(OBJS) pipex.h
-				@${MAKE} -C ./ft_printf
-				@${CC} ${CFLAGS} ${OBJS} ./ft_printf/ft_printf -o pipex
+				@${CC} ${CFLAGS} ${OBJS}  -o pipex
 
 clean:
-				@${MAKE} -C ./ft_printf fclean
 				$(RM) $(OBJS)
 
 fclean:			clean

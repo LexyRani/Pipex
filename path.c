@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:25:32 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/27 18:19:20 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:37:55 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*ft_check_path(t_pipex *pipex, int index)
 		add_slash = ft_strjoin(pipex->paths[i], "/");
 		path = ft_strjoin(add_slash, pipex->cmd);
 		free(add_slash);
-		if (access(path, F_OK | X_OK) == 0)
+		if (path && access(path, F_OK | X_OK) == 0)
 		{
 			ft_free(pipex->paths);
 			return (path);

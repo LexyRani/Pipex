@@ -6,11 +6,18 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 13:59:09 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/27 19:45:23 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:34:22 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	ft_error(t_pipex *pipex, char *error)
+{
+	perror(error);
+	free(pipex);
+	exit(EXIT_FAILURE);
+}
 
 void	ft_child1_process(t_pipex *pipex, char *argv[])
 {
@@ -30,7 +37,6 @@ void	ft_child1_process(t_pipex *pipex, char *argv[])
 	ft_free(pipex->cmd1);
 	free(pipex);
 	exit(EXIT_FAILURE);
-	
 }
 
 void	ft_child2_process(t_pipex *pipex, char *argv[])

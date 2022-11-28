@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:09:09 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/27 15:48:24 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/27 20:19:20 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <stdio.h>
 # include <errno.h>
 # include <time.h>
-# include "./ft_printf/ft_printf.h"
 
 typedef struct s_pipex
 {

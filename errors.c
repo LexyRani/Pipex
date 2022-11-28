@@ -6,7 +6,7 @@
 /*   By: aceralin <aceralin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 21:25:08 by aceralin          #+#    #+#             */
-/*   Updated: 2022/11/27 17:46:21 by aceralin         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:34:19 by aceralin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@ void	ft_exit(t_pipex *pipex)
 void	ft_argc_error(t_pipex *pipex)
 {
 	write (2, "Invalid arg number\nEx:./pipex [file1][cmd1][cmd2][file2]\n", 58);
-	free(pipex);
-	exit(EXIT_FAILURE);
-}
-
-void	ft_error(t_pipex *pipex, char *error)
-{
-	perror(error);
 	free(pipex);
 	exit(EXIT_FAILURE);
 }
